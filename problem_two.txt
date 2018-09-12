@@ -1,0 +1,3 @@
+'''
+2.	Determine the optimal logistic hypothesis using logistic regression to predict if a student passes or not based on the number hours studied.
+'''

@@ -31,7 +31,10 @@ A group of 20 students studied 0 to 6 hours for the exam.  Some passed and other
 2.	Determine the optimal logistic hypothesis using logistic regression to predict if a student passes or not based on the number hours studied.
 3.	Plot both hypothesis function 0 < x < 6. Compare and explain the two results obtained. 
 4.	Develop a logistic regression-like algorithm for the following cost function.
+
 Y = 1 - Cost function goes from 100 to 0 linearly as hypothesis function goes from 0 to 1
+
 Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes from 0 to 1
+
 Compare results with those of the standard logistic algorithm.
 
