@@ -7,3 +7,17 @@ Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes fr
 
 Compare results with those of the standard logistic algorithm.
 '''
+
+Cost = -y * ( 100 - 100 * x ) - ( 1 - y )(0 + 100 * x)
+
+
+(0, 100), (.50, 50), (1, 100)
+
+
+If y = 1 then cost (hθ (x) , y) =  - log (hθ (x)).  Otherwise, cost 
+(hθ (x) , y) =  - log (1 - hθ (x)).  For y = 1, if you plot the cost function as 
+hypothesis function hθ (x) goes from 0 to 1, the cost function goes from infinity
+to 0 as desired. For y = 0, if you plot the cost function as hypothesis function 
+hθ (x) goes from 0 to 1 for y = 0, the cost function goes from 0 to infinity as desired.
+A more compact way of writing the cost function is,
+cost (hθ (x) , y) =  - y log (hθ (x)) – (1 - y) log (1 - hθ (x)).  
