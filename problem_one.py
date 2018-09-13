@@ -24,7 +24,7 @@ data = [
 #Initial variables
 theta0 = 0.0;
 theta1 = 0.0;
-alpha = .1;
+alpha = .01;
 m = len(data);
 
 def simple_linear(theta0, theta1, x):
