@@ -7,11 +7,16 @@ Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes fr
 
 Compare results with those of the standard logistic algorithm.
 '''
-
-Cost = -y * ( 100 - 100 * x ) - ( 1 - y )(0 + 100 * x)
-
-
 (0, 100), (.50, 50), (1, 100)
+
+J(theta) = Cost = Y * ( 100 - 100 * x ) - ( 1 - Y )( 100 * x)
+
+dJ(theta) / dX = -100 when Y = 1
+                  100 when Y = 0
+
+
+
+
 
 
 One thing that stands out is that the gradient will be constant unlike when you 
