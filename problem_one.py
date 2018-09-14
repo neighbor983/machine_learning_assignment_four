@@ -24,10 +24,10 @@ data = [
 #Initial variables
 theta0 = 0.0;
 theta1 = 0.0;
-alpha = .01;
+alpha = 0.05;
 m = len(data);
 
-def simple_linear(theta0, theta1, x):
+def simple_linear(theta_0, theta_1, x):
     '''
     description:
         takes in the thetas and the x_i and returns the predicted y for a simple linear regression
@@ -38,9 +38,9 @@ def simple_linear(theta0, theta1, x):
     output:
         number
     '''
-    return theta0 + theta1 * x;
+    return theta_0 + theta_1 * x;
 
-def cost_function(theta0, theta1, alpha, m, dataList):
+def cost_function(theta_0, theta_1, alpha, m, dataList):
     '''
     description:
         get the cost for a given model and thetas
@@ -57,11 +57,11 @@ def cost_function(theta0, theta1, alpha, m, dataList):
     for row in dataList: 
         x = row['x'];
         y = row['y'];
-        summation += (simple_linear(theta0, theta1,x) - y)**2;
+        summation += (simple_linear(theta_0, theta_1, x) - y)**2;
     cost = ( .5 * m ) * summation;
     return cost;
     
-def theta0_gradient(theta0, theta1, alpha, m, dataList) : 
+def theta0_gradient(theta_0, theta_1, alpha, m, dataList) : 
     '''
     description:
         Use gradient descent to generate the new theta0
@@ -77,11 +77,11 @@ def theta0_gradient(theta0, theta1, alpha, m, dataList) :
     for row in dataList:  
         x = row['x'];
         y = row['y'];
-        summation += (simple_linear(theta0, theta1, x) - y);
-    theta0 = theta0 - ( alpha / m) * summation;
-    return theta0
+        summation += (simple_linear(theta_0, theta_1, x) - y);
+    theta_0 = theta_0 - ( alpha / m) * summation;
+    return theta_0
     
-def theta1_gradient(theta0, theta1, alpha, m, dataList) : 
+def theta1_gradient(theta_0, theta_1, alpha, m, dataList) : 
     '''
     description:
         Use gradient descent to generate the new theta1
@@ -97,9 +97,9 @@ def theta1_gradient(theta0, theta1, alpha, m, dataList) :
     for row in dataList: 
         x = row['x'];
         y = row['y'];
-        summation += ((simple_linear(theta0, theta1, x) - y) * x)
-    theta1 = theta1 - ( alpha / m ) * summation
-    return theta1
+        summation += ((simple_linear(theta_0, theta_1, x) - y) * x)
+    theta_1 = theta_1 - ( alpha / m ) * summation
+    return theta_1
     
 j_theta = cost_function(theta0, theta1, alpha, m, data);    
 
@@ -119,3 +119,4 @@ while( j_theta > ( j_theta_new * 1.001 ) ):
 
 print(theta0);
 print(theta1);
+print(cost_function(theta0, theta1, alpha, m, data));

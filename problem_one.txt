@@ -3,7 +3,14 @@
 '''
 y = h(theta) = theta_naught + theta_one * x;
 
-theta_naught = 0.095
-theta_one = 0.17606249999999996 ~ 0.176
+If hθ (x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
 
-y = h(theta) = .095 + .176 * x;
+Starting values
+theta0 = 0.0;
+theta1 = 0.0;
+alpha = 0.05;
+
+theta_naught = 0.020966505425145464 ~ 0.021
+theta_one = 0.18447316076872963 ~ 0.184
+
+y = h(theta) = .021 + .184 * x;

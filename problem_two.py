@@ -26,22 +26,20 @@ data = [
 #Initial variables
 theta0 = 0.0;
 theta1 = 0.0;
-alpha = .5;
+alpha = .01;
 m = len(data);
 count = 0;
 
-def hypothese_function(theta0, theta1, x):
-    a = exp( -1 * ( theta0 + theta1 * x ) );
-    return 1.0 / ( 1.0 + a );
+def hypothese_function(theta_0, theta_1, x):
+    return 1.0 / ( 1.0 +  exp( -1 * ( theta_0 + theta_1 * x ) ) );
 
-def cost_function(theta0, theta1, m, data):
+def cost_function(theta_0, theta_1, data):
     '''
     description:
         get the cost for a given model and thetas
     params:
-        theta0 = number
-        theta1 = number
-        m = number
+        theta_0 = number
+        theta_1 = number
         data = list of objects with 'x' and 'y'
     output:
         number
@@ -50,10 +48,11 @@ def cost_function(theta0, theta1, m, data):
     for item in data:
         x = item['x'];
         y = item['y'];
-        summation += -y * log( hypothese_function( theta0, theta1, x ) ) - ( 1 - y ) * log( 1 -hypothese_function(theta0,theta1,x) )  ;
+        # - y log (hθ (x)) – (1 - y) log (1 - hθ (x))
+        summation += -y * log( hypothese_function( theta_0=theta_0, theta_1=theta_1, x=x ) ) - ( 1 - y ) * log( 1 - hypothese_function(theta_0=theta_0, theta_1=theta_1, x=x ) );
     return summation;
 
-def theta0_update(theta0, theta1, alpha, m, data):
+def theta0_update(theta_0, theta_1, alpha, data):
     '''
     description:
         get the updated theta0
@@ -69,18 +68,17 @@ def theta0_update(theta0, theta1, alpha, m, data):
     for item in data:
         x = item['x'];
         y = item['y'];
-        summation += ( hypothese_function( theta0, theta1, x ) - y );
+        summation += ( hypothese_function( theta_0=theta_0, theta_1=theta_1, x=x ) - y );
     
-    return theta0 - ( alpha / m ) * summation;
+    return theta0 - alpha * summation;
 
-def theta1_update(theta0, theta1, alpha, m, data):
+def theta1_update(theta_0, theta_1, alpha, data):
     '''
     description:
         get the updated theta1
     params:
         theta0 = number
         theta1 = number
-        m = number
         data = list of objects with 'x' and 'y'
     output:
         number
@@ -89,28 +87,29 @@ def theta1_update(theta0, theta1, alpha, m, data):
     for item in data:
         x = item['x'];
         y = item['y'];
-        summation += ( ( hypothese_function( theta0, theta1, x ) - y ) * x );
+        summation += ( ( hypothese_function( theta_0=theta_0, theta_1=theta_1, x=x  ) - y ) * x );
     
-    return theta1 - ( alpha / m ) * summation;
+    return theta1 - alpha * summation;
 
-j_theta = cost_function(theta0, theta1, m, data);    
+j_theta = cost_function(theta_0=theta0, theta_1=theta1, data=data);    
 
-theta0_new = theta0_update(theta0, theta1, alpha, m, data);
-theta1_new = theta1_update(theta0, theta1, alpha, m, data);
+theta0_new = theta0_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
+theta1_new = theta1_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
 theta0 = theta0_new;
 theta1 = theta1_new;
-j_theta_new = cost_function(theta0_new, theta1_new, m, data);
+j_theta_new = cost_function(theta_0=theta0_new, theta_1=theta1_new, data=data);
 count += 1;
 
 while( j_theta > ( j_theta_new * 1.001 ) ):
-    theta0_new = theta0_update(theta0, theta1, alpha, m, data);
-    theta1_new = theta1_update(theta0, theta1, alpha, m, data);
+    theta0_new = theta0_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
+    theta1_new = theta1_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
     theta0 = theta0_new;
     theta1 = theta1_new;
     j_theta = j_theta_new;
-    j_theta_new = cost_function(theta0_new, theta1_new, m, data);
+    j_theta_new = cost_function(theta_0=theta0_new, theta_1=theta1_new, data=data);
     count += 1;
 
 print(theta0);
 print(theta1);
 print(count);
+print(cost_function(theta_0=theta0, theta_1=theta1, data=data));

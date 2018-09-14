@@ -1,3 +1,10 @@
 '''
 3.	Plot both hypothesis function 0 < x < 6. Compare and explain the two results obtained. 
 '''
+The Logistic Regression algorithm will always return you a h(theta) between 0 
+and 1. The Linear Regression algorithm can return a h(theta) of greater then 1 
+or less than 0. So if we were to add a large x of 25 hours with a y = 1 to the 
+data set the optimal line will have to be significant lowered. The Logistic 
+Regression alogrithm uses a sigmiod function that will never exceed one so 
+adding a large x of 25 hours with a y = 1 to the data set would not have a 
+significant effect on the optimal line.  
