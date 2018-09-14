@@ -59,9 +59,6 @@ for x in xValues:
     linearRegressionYValues.append(linearTheta0 + .176 * x);
     logisticRegressionYValues.append( 1.0 / ( 1 + exp( -1 * (  logisticTheta0  +  logisticTheta1 * x ) ) ));
     
-#print(linearRegressionYValues);
-#print(logisticRegressionYValues);
-
 
 line_plot(xValues, linearRegressionYValues, 'Linear', 'linearRegression.svg');
 line_plot(xValues, logisticRegressionYValues, 'Logistic', 'logisticRegression.svg');
