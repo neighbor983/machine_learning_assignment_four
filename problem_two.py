@@ -31,12 +31,22 @@ m = len(data);
 count = 0;
 
 def hypothese_function(theta_0, theta_1, x):
+    '''
+    description:
+        provides the hypothese function for when using logistic regression
+    params:
+        theta_0 = number
+        theta_1 = number
+        data = list of objects with 'x'
+    output:
+        number
+    '''
     return 1.0 / ( 1.0 +  exp( -1 * ( theta_0 + theta_1 * x ) ) );
 
 def cost_function(theta_0, theta_1, data):
     '''
     description:
-        get the cost for a given model and thetas
+        get the cost for the logistic regression model and thetas with the given training data set
     params:
         theta_0 = number
         theta_1 = number
