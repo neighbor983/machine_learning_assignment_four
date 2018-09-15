@@ -16,9 +16,6 @@ dJ(theta) / dX = -100 when Y = 1
 
 
 
-
-
-
 One thing that stands out is that the gradient will be constant unlike when you 
 use the standard logistic algorithm. Since we have only used a constant learning 
 rate we are dependent on the gradient magnitude to adjust the rate we update 
