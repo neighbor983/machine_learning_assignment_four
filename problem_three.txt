@@ -13,6 +13,5 @@ the optimal line when using a Linear function will be significantly affected.
 The Logistic function is a sigmoid function which will never exceed one so 
 adding a large sample like x = 25 hours of studying and y = 1 to the training 
 data would not have a significant effect on the optimal line. It is happenstance 
-that both of the functions will reached the decision boundary of y = .5 at 
-approximately the same point.
+that both of the functions will reached y = .5 at approximately the same point.
  
