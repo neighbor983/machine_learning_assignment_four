@@ -2,14 +2,17 @@
 obtained. 
 
 
-For the given training set both of the Linear and Logistic functions cross 
-y = 0.5 close to each other. The Linear function reaches y = 0.5 when x ~ 2.7 
-hours of studying. The Logistic function reaches y = 0.5 when x ~ 2.5 hours of 
-studying.
+For the given training set both of the Linear and Logistic hypothesis functions 
+cross h(θ) = y = 0.5 close to each other. The Linear function reaches y = 0.5 
+when x ~ 2.7 hours of studying. The Logistic function reaches y = 0.5 when x ~ 
+2.5 hours of studying.
 
-The Logistic Regression algorithm will always return us a h(theta) between 0 and 
-1. If we were to add a large x of 25 hours with a y = 1 to the data set the 
-optimal line will have to be significant lowered. The Logistic Regression 
-alogrithm uses a sigmoid function that will never exceed one so adding a large x 
-of 25 hours with a y = 1 to the data set would not have a significant effect on 
-the optimal line.  
+The Logistic function will always return us a h(θ) between 0 and 1. If we were 
+to add a large sample like x = 25 hours of studying and y = 1 to the data set 
+the optimal line when using a Linear function will be significantly affected. 
+The Logistic function is a sigmoid function which will never exceed one so 
+adding a large sample like x = 25 hours of studying and y = 1 to the training 
+data would not have a significant effect on the optimal line. It is happenstance 
+that both of the functions will reached the decision boundary of y = .5 at 
+approximately the same point.
+ 
