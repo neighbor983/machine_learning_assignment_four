@@ -7,14 +7,41 @@ Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes fr
 
 Compare results with those of the standard logistic algorithm.
 '''
-J(θ) = Cost = Y * ( 100 - 100 * x ) - ( 1 - Y )( 100 * x)
 
-gradj[J(θ)] = -100 when Y = 1
-               100 when Y = 0
+hθ(x) = g(θX)
+g(z) = 1 / ( 1 + e (−z) )
+
+J(θ) = Cost = 1 / m * Y  * ( 100 - 100 * hθ(x) ) - ( 1 - Y ) * ( 100 * hθ(x) )
+
+gradj[J(θ)] = 1 / m * ( d/dθ[ Y  * ( 100 - 100 * hθ(x) )] -  d/dθ[ ( 1 - Y ) * ( 100 * hθ(x) )])
+
+1 / m * ( Y * 100 * d/dθ[ 1 - hθ(x) ] -  ( 1 - Y ) * 100 * d/dθ[ hθ(x) ])
+
+1 / m * (  100 * Y * d/dθ[ 1 - hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[ hθ(x) ])
+
+1 / m * ( -100 * Y * d/dθ[ hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[ hθ(x) ])
+
+1 / m * ( -100 * Y * d/dθ[ hθ(x) ] + -100 * d/dθ[ hθ(x) ] + 100 * Y * d/dθ[ hθ(x) ])
+
+1 / m * ( -100 * d/dθ[ hθ(x) ])
+
+-100 / m * d/dθ[ hθ(x) ]
+
+-100 / m * d/dθ[ 1 / ( 1 + e (−θX) ) ]
+
+100 / ( m * ( 1 + e (−θX) )^2 ) * d/dθ[ 1 + e (−θX) ]  
+
+100 / ( m * ( 1 + e (−θX) )^2 ) *  d/dθ[ e (−θX) ] 
+
+100 / ( m * ( 1 + e (−θX) )^2 ) *  e (−θX) * d/dθ[ −θX ] 
+
+100 / ( m * ( 1 + e (−θX) )^2 ) *  e (−θX) * -X *  d/dθ[ θ ]
+
+-( 100 * X * e (−θX) ) / ( m * ( 1 + e (−θX) )^2 ) 
+
+gradj[J(θ)] = -( 100 * X * e (−θX) ) / ( m * ( 1 + e (−θX) )^2 ) 
 
 θj = θj – α gradj[J(θ)] 
-θ0  = θ0 – α [ (1/m) ∑ i = 1 to m (hθ (Xi) – yi) xi0]
-θj  = θj – α [ (1/m) ∑ i = 1 to m (hθ (Xi) – yi) xij]
 
 Algorithm: 
 Step 1: Select an initial θ(1). 
