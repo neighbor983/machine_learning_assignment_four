@@ -8,84 +8,50 @@ Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes fr
 Compare results with those of the standard logistic algorithm.
 '''
 
-hθ(x) = g(θX)
-g(z) = 1 / ( 1 + e (−z) )
-
-d/dθ[ hθ(X) ] = d/dθ [ 1 / ( 1 + exp( -θX))]
-
-d/dθ [-( 1 + exp(-θX) )] / ( 1 + exp(-θX) ) ** 2
-
-- d/dθ [-θX ] * exp(-θX) / ( 1 + exp(-θX) ) ** 2
-
-d/dθ[ hθ(x) ] = X * exp(-θX) / ( 1 + exp(-θX) ) ** 2
+hθ(x) = g(θtX)
+g(z) = 1 / ( 1 + exp(−z) )
+g’(z) = g(z)*(1-g(z)).
 
 
-J(θ) = Cost = 100 - 100 * hθ(x)         when Y = 1
-              100 * hθ(x)               when Y = 0
+d/dθj[ hθ(X) ] = d/dθ [ 1 / ( 1 + exp( -θXij))]
+
+d/dθj [-( 1 + exp(-θXj) )] / ( 1 + exp(-θXj) ) ** 2
+
+- d/dθj [-θX ] * exp(-θXj) / ( 1 + exp(-θXj) ) ** 2
+
+d/dθj[ hθ(x) ] = Xj * exp(-θX) / ( 1 + exp(-θX) ) ** 2
+
+J(θ) = Cost = 100 - 100 * hθ(X)         when Y = 1
+              100 * hθ(X)               when Y = 0
               
 J(θ) = Yi * ( 100 - 100 * hθ(xi) ) + ( 1 - Yi ) * ( 100 * hθ(xi) )
 
-dJ / dθ0 = 1 / m * sum i=1 to m(d/dθ0[ Yi * ( 100 - 100 * hθ(xi) ) + ( 1 - Yi ) * ( 100 * hθ(xi) ) ] )
+dJ / dθj = 1 / m * sum i=1 to m(d/dθj[ Yi * ( 100 - 100 * hθ(xi) ) + ( 1 - Yi ) * ( 100 * hθ(xi) ) ] )
 
- 1 / m * sum i=1 to m( Yi * d/dθ0[ ( 100 - 100 * hθ(xi) ) ] + ( 1 - Yi ) * d/dθ0[ ( 100 * hθ(xi) ) ] )
+1 / m * sum i=1 to m( Yi * d/dθj[ ( 100 - 100 * hθ(xi) ) ] + ( 1 - Yi ) * d/dθj[ ( 100 * hθ(xi) ) ] )
  
- 1 / m * sum i=1 to m( 100 * Yi * d/dθ0[ ( 1 - hθ(xi) ) ] + ( 100 - 100 * Yi ) * d/dθ0[ ( hθ(xi) ) ] )
+1 / m * sum i=1 to m( 100 * Yi * d/dθj[ ( 1 - hθ(xi) ) ] + ( 100 - 100 * Yi ) * d/dθj[ ( hθ(xi) ) ] )
  
- 1 / m * sum i=1 to m( -100 * Yi * d/dθ0[ ( hθ(xi) ) ] + ( 100 - 100 * Yi ) * d/dθ0[ ( hθ(xi) ) ] ) 
+1 / m * sum i=1 to m( -100 * Yi * d/dθj[ ( hθ(xi) ) ] + ( 100 - 100 * Yi ) * d/dθj[ ( hθ(xi) ) ] ) 
  
- 1 / m * sum i=1 to m( ( 100 - 200 * Yi ) * d/dθ0[ ( hθ(Xi) ) ] ) 
- 
- 1 / m * sum i=1 to m( ( 100 - 200 * Yi ) * (Xi * exp(-θXi) / ( 1 + exp(-θXi) ) ** 2) ] )  
- 
-dJ / dθ0 =   1 / m * sum i=1 to m( ( 100 - 200 * Yi ) * (Xi * exp(-θXi) / ( 1 + exp(-θXi) ) ** 2) ] )
+1 / m * sum i=1 to m( ( 100 - 200 * Yi ) * d/dθj[ ( hθ(Xi) ) ] )
 
+1 / m * sum i=1 to m( ( 100 - 200 * Yi ) * d/dθj[ ( g(θtX) ) ] )
 
+1 / m * sum i=1 to m( ( 100 - 200 * Yi ) *  ( g(θtX) * ( 1 - g(θtX) ) *  d/dθj[ θtXi ] )
 
+dJ / dθj = 1 / m * sum i=1 to m( ( 100 - 200 * Yi ) *  ( hθ(Xi) * ( 1 -  hθ(Xi) ) *  Xij  )
 
-gradj[J(θ)] = d/dθ[ Y  * ( 100 - 100 * hθ(x) )] + d/dθ[ ( 1 - Y ) * ( 100 * hθ(x) )]
+θj = θj – α * dJ / dθj 
 
-100 * Y * d/dθ[ ( 1 - hθ(x) )] + ( 100 - 100 * Y ) * d/dθ[ hθ(x) ]
+θ0 = θ0 – α *  1 / m * sum i=1 to m( ( 100 - 200 * Yi ) *  ( hθ(Xi) * ( 1 -  hθ(Xi) ) )
 
--100 * Y * d/dθ[  hθ(x) ] + ( 100 - 100 * Y ) * d/dθ[ hθ(x) ]
-
-
-
-
-Y * d/dθ[( 100 - 100 * hθ(x) )] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ]
-
-100 * Y * d/dθ[( 1 - hθ(x) )] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ]
-
--100 * Y * d/dθ[ hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ]
-
--100 * Y * d/dθ[ hθ(x) ] + ( -100 + 100 * Y ) * d/dθ[  hθ(x) ]
-
--100 * d/dθ[ hθ(x) ]
-
-
-
--100 * d/dθ[ hθ(x) ]
-
--100 * d/dθ[ 1 / ( 1 + e (−θX) ) ]
-
-100 / ( ( 1 + exp(−θX) ) ** 2 ) * d/dθ[ 1 + exp(−θX) ]  
-
-100 / ( ( 1 + exp (−θX) ) ** 2 ) * d/dθ[ exp(−θX) ] 
-
-100 / ( ( 1 + exp (−θX) ) **2 ) * exp(−θX) * d/dθ[ −θX ] 
-
-100 / ( ( 1 + exp(−θX) ) ** 2 ) * exp(−θX) * -X
-
--100 * X * exp(−θX) / ( ( 1 + exp(−θX) ) ** 2 ) 
-
-
-gradj[J(θ)] = -100 * X * exp(−θX) / ( ( 1 + exp(−θX) ) ** 2 ) 
-
-θj = θj – α gradj[J(θ)] 
+θj = θj – α *  1 / m * sum i=1 to m( ( 100 - 200 * Yi ) *  ( hθ(Xi) * ( 1 -  hθ(Xi) ) *  Xij  ); j = 1,2,..,n 
 
 Algorithm: 
 Step 1: Select an initial θ(1). 
 Step 2: During iteration k
-        θ(k+1) = θ(k) – α gradj[J(θ)]
+        θ(k+1) = θ(k) – α * dJ / dθ 
         k=k+1
 Step 3: If accuracy is acceptable, stop.  Otherwise, go to Step 2. 
 
