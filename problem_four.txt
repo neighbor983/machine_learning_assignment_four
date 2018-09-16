@@ -15,31 +15,31 @@ J(θ) = Cost = 1 / m * Y  * ( 100 - 100 * hθ(x) ) - ( 1 - Y ) * ( 100 * hθ(x) 
 
 gradj[J(θ)] = 1 / m * ( d/dθ[ Y  * ( 100 - 100 * hθ(x) )] -  d/dθ[ ( 1 - Y ) * ( 100 * hθ(x) )])
 
-1 / m * ( Y * 100 * d/dθ[ 1 - hθ(x) ] -  ( 1 - Y ) * 100 * d/dθ[ hθ(x) ])
+1 / m * ( Y * d/dθ[( 100 - 100 * hθ(x) )] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ])
 
-1 / m * (  100 * Y * d/dθ[ 1 - hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[ hθ(x) ])
+1 / m * ( 100 * Y * d/dθ[( 1 - hθ(x) )] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ])
 
-1 / m * ( -100 * Y * d/dθ[ hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[ hθ(x) ])
+1 / m * ( -100 * Y * d/dθ[ hθ(x) ] - ( 100 - 100 * Y ) * d/dθ[  hθ(x) ])
 
-1 / m * ( -100 * Y * d/dθ[ hθ(x) ] + -100 * d/dθ[ hθ(x) ] + 100 * Y * d/dθ[ hθ(x) ])
+1 / m * ( -100 * Y * d/dθ[ hθ(x) ] + ( -100 + 100 * Y ) * d/dθ[  hθ(x) ])
 
-1 / m * ( -100 * d/dθ[ hθ(x) ])
+1 / m * ( ( -100 ) * d/dθ[  hθ(x) ])
 
 -100 / m * d/dθ[ hθ(x) ]
 
 -100 / m * d/dθ[ 1 / ( 1 + e (−θX) ) ]
 
-100 / ( m * ( 1 + e (−θX) )^2 ) * d/dθ[ 1 + e (−θX) ]  
+100 / ( m * ( 1 + exp(−θX) ) ** 2 ) * d/dθ[ 1 + exp(−θX) ]  
 
-100 / ( m * ( 1 + e (−θX) )^2 ) *  d/dθ[ e (−θX) ] 
+100 / ( m * ( 1 + exp (−θX) ) ** 2 ) * d/dθ[ exp(−θX) ] 
 
-100 / ( m * ( 1 + e (−θX) )^2 ) *  e (−θX) * d/dθ[ −θX ] 
+100 / ( m * ( 1 + exp (−θX) ) **2 ) * exp(−θX) * d/dθ[ −θX ] 
 
-100 / ( m * ( 1 + e (−θX) )^2 ) *  e (−θX) * -X *  d/dθ[ θ ]
+100 / ( m * ( 1 + exp(−θX) ) ** 2 ) * exp(−θX) * -X *  d/dθ[ θ ]
 
--( 100 * X * e (−θX) ) / ( m * ( 1 + e (−θX) )^2 ) 
+-( 100 * X * exp(−θX) ) / ( m * ( 1 + exp(−θX) ) ** 2 ) 
 
-gradj[J(θ)] = -( 100 * X * e (−θX) ) / ( m * ( 1 + e (−θX) )^2 ) 
+gradj[J(θ)] = -( 100 * X * exp(−θX) ) / ( m * ( 1 + exp(−θX) ) ** 2 ) 
 
 θj = θj – α gradj[J(θ)] 
 
@@ -51,7 +51,7 @@ Step 2: During iteration k
 Step 3: If accuracy is acceptable, stop.  Otherwise, go to Step 2. 
 
 
-
+*********Need to think about this******
 One thing that stands out is that the gradient will be constant unlike when you 
 use the standard logistic algorithm. Since we have only used a constant learning 
 rate we are dependent on the gradient magnitude to adjust the rate we update 
