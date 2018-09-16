@@ -1,16 +1,16 @@
 '''
 1.	Determine the optimal linear hypothesis using linear regression to predict if a student passes or not based on the number hours studied.
 '''
-y = h(theta) = theta_naught + theta_one * x;
+y = h(θ) = θ_naught + θ_one * x;
 
 If hθ (x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
 
 Starting values
-theta0 = 0.0;
-theta1 = 0.0;
+θ_naught = 0.0;
+θ_one = 0.0;
 alpha = 0.05;
 
-theta_naught = 0.020966505425145464 ~ 0.021
-theta_one = 0.18447316076872963 ~ 0.184
+θ_naught = 0.020966505425145464 ~ 0.021
+θ_one = 0.18447316076872963 ~ 0.184
 
-y = h(theta) = .021 + .184 * x;
+y = h(θ) = .021 + .184 * x;
