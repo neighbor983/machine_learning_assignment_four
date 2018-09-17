@@ -1,6 +1,5 @@
-'''
 2.	Determine the optimal logistic hypothesis using logistic regression to predict if a student passes or not based on the number hours studied.
-'''
+
 h(θ) = 1.0 / ( 1 + exp( -1 * ( theta0 + theta1 * x ) ) );
 
 If hθ (x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
