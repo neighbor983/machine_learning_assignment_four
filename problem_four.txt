@@ -1,17 +1,11 @@
-'''
 4.	Develop a logistic regression-like algorithm for the following cost function.
-
 Y = 1 - Cost function goes from 100 to 0 linearly as hypothesis function goes from 0 to 1
-
 Y = 0 - Cost function goes from 0 to 100 linearly as hypothesis function goes from 0 to 1
-
 Compare results with those of the standard logistic algorithm.
-'''
 
 hθ(x) = g(θtX)
 g(z) = 1 / ( 1 + exp(−z) )
-g’(z) = g(z)*(1-g(z)).
-
+g’(z) = g(z)*(1-g(z))
 
 d/dθj[ hθ(X) ] = d/dθ [ 1 / ( 1 + exp( -θXij))]
 
@@ -55,12 +49,16 @@ Step 2: During iteration k
         k=k+1
 Step 3: If accuracy is acceptable, stop.  Otherwise, go to Step 2. 
 
+********
+Standard Logistic Regrission:
 
-*********Need to think about this******
-One thing that stands out is that the gradient will be constant unlike when you 
-use the standard logistic algorithm. Since we have only used a constant learning 
-rate we are dependent on the gradient magnitude to adjust the rate we update 
-theta. Since there will be no change in the adjustment magnitude to theta we 
-will require a smaller learning rate to ensure we do not overshoot the minimum 
-to early because once that happens we will not be able to lower the cost because 
-we will just go back and forth between those two cost.
+J(θ) = - y log (hθ (x)) – (1 - y) log (1 - hθ (x))
+
+hθ(x) = g(θtX)
+g(z) = 1 / ( 1 + exp(−z) )
+g’(z) = g(z)*(1-g(z))
+
+θ0 = θ0 – α *[ sum i = 1 to m ( ( hθ(xi) – yi ) ] 
+θj = θj – α *[ sum i = 1 to m ( ( hθ(xi) – yi ) xij ] ; j = 1,2,..,n 
+
+

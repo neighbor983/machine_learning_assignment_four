@@ -1,9 +1,17 @@
-'''
-1.	Determine the optimal linear hypothesis using linear regression to predict if a student passes or not based on the number hours studied.
-'''
-y = h(θ) = θ_naught + θ_one * x;
+1. Determine the optimal linear hypothesis using linear regression to predict if a student passes or not based on the number hours studied.
 
-If hθ (x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
+1. Model
+y = hθ(x) = θ_naught + θ_one * x;
+
+If hθ(x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
+
+2. Cost Function
+J(θ)=1/2m  ∑_(i=1 to m (hθ(xi))−yi)^2 
+
+3. Machine Learning Algorithm
+θj =  θj - α/2 ∑ i=1 to m (hθ(x) − yi) *(xi)
+
+4. Test for converengence. If not acceptable then go back to step 3.  
 
 Starting values
 θ_naught = 0.0;
