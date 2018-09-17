@@ -110,7 +110,7 @@ theta1 = theta1_new;
 j_theta_new = cost_function(theta_0=theta0_new, theta_1=theta1_new, data=data);
 count += 1;
 
-while( j_theta > ( j_theta_new * 1.001 ) ):
+while( j_theta > ( j_theta_new * 1.0000001 ) ):
     theta0_new = theta0_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
     theta1_new = theta1_update(theta_0=theta0, theta_1=theta1, alpha=alpha, data=data);
     theta0 = theta0_new;
