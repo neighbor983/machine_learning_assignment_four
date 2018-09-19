@@ -1,16 +1,23 @@
 2.	Determine the optimal logistic hypothesis using logistic regression to predict if a student passes or not based on the number hours studied.
 
+1. Model
 h(θ) = 1.0 / ( 1 + exp( -1 * ( theta0 + theta1 * x ) ) );
-
 If hθ (x) is greater than or equal to 0.5, predict “y = 1”. Otherwise, predict “y = 0”.
 
+2. Cost Function
 J(θ) = (-1/m) [∑i = 1 to m (yi * log (hθ (xi)) + (1 – yi) * log (1 - hθ (xi))]
 
+3. Machine Learning Algorithm
 θj = θj – α gradj[J(θ)]                             
 θj = θj – α[∑i = 1 to m ((hθ (xi) – yi) xij]
 
+4. Test for convergence. If not acceptable then go back to step 3, otherwise stop.
+
+Starting Values
+theta0 = 0.0;
+theta1 = 0.0;
+alpha = .01;
+
 theta0 = -4.048669531260693 ~ -4.049;
-
 theta1 = 1.4948163436365802 ~ 1.494;
-
 h(θ) = 1.0 / ( 1 + exp( -1 * ( -4.049 + 1.494 * x ) ) );
