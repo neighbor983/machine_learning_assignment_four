@@ -41,8 +41,8 @@ def two_line_plot(x1, y1, x2, y2, title, filename):
 
 linearTheta0 = 0.020966505425145464;
 linearTheta1 = 0.18447316076872963;
-logisticTheta0 = -2.091321055288621;
-logisticTheta1 =  0.8471563086673924;
+logisticTheta0 = -4.048669531260693;
+logisticTheta1 =  1.4948163436365802;
 
 
 xValues = [];
@@ -50,12 +50,10 @@ step = .1
 for i in frange(0.0, 6.0 + step, step):
     xValues.append(i);
 
-#print(xValues);
 linearRegressionYValues = [];
 logisticRegressionYValues = [];
 
 for x in xValues:
-
     linearRegressionYValues.append(linearTheta0 + .176 * x);
     logisticRegressionYValues.append( 1.0 / ( 1 + exp( -1 * (  logisticTheta0  +  logisticTheta1 * x ) ) ));
     

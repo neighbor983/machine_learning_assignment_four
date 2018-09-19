@@ -5,7 +5,7 @@ obtained.
 For the given training set both of the Linear and Logistic hypothesis functions 
 cross h(θ) = y = 0.5 close to each other. The Linear function reaches y = 0.5 
 when x ~ 2.7 hours of studying. The Logistic function reaches y = 0.5 when x ~ 
-2.5 hours of studying.
+2.7 hours of studying.
 
 The Logistic function will always return us a h(θ) between 0 and 1. If we were 
 to add a large sample like x = 25 hours of studying and y = 1 to the data set 
